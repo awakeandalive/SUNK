@@ -9,7 +9,7 @@ public class UnderwaterEffect : MonoBehaviour
     public float waveFrequency = 0.3f;
 
     [Header("Instant Responsiveness")]
-    public float waterOffset = 0.25f; // A tiny buffer to eliminate the split-second gray flash!
+    public float waterOffset = 0.25f; // A tiny buffer to eliminate the split-second gray flash! this is ai couldnt figure change later
 
     [Header("Colors")]
     public Color normalSkyColor = new Color(0.4f, 0.6f, 0.9f);
@@ -39,22 +39,20 @@ public class UnderwaterEffect : MonoBehaviour
     {
         if (oceanTransform == null) return;
 
-        // Use relative position so the wave math matches the ocean mesh perfectly
+        // Use relative position so the wave math matches the ocean mesh perfectly ai prompt change it laterrr
         Vector3 localPos = transform.position - oceanTransform.position;
         float x = localPos.x;
         float z = localPos.z;
 
-        // Exact same wave formula as your RealWaves script
+        // copy pasted from realwaves.cs
         float wave1 = Mathf.Sin(Time.time * waveSpeed + (x * waveFrequency) + (z * waveFrequency));
         float wave2 = Mathf.Cos(Time.time * (waveSpeed * 0.7f) + (x * (waveFrequency * 1.3f) - (z * waveFrequency)));
-
-        // Add the tiny waterOffset buffer so it reacts instantly on touch
         float currentWaterHeight = oceanTransform.position.y + ((wave1 + wave2) * waveHeight) + waterOffset;
 
-        // Check if camera is below the buffered water height
+        // camera Pos above or under
         if (transform.position.y < currentWaterHeight)
         {
-            // Under Water Settings
+            // underwater
             RenderSettings.fog = true;
             RenderSettings.fogColor = underwaterColor;
             RenderSettings.fogMode = FogMode.ExponentialSquared;
@@ -65,7 +63,7 @@ public class UnderwaterEffect : MonoBehaviour
         }
         else
         {
-            // Above Water Settings (Clean reset)
+            // abovewater
             RenderSettings.fog = false;
             cam.clearFlags = CameraClearFlags.Skybox;
             cam.backgroundColor = normalSkyColor;

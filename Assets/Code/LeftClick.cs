@@ -8,7 +8,7 @@ public class PlayerLeftClick : MonoBehaviour
 
     void Update()
     {
-        // Check for Left Mouse Button click (0 = Left Click)
+        // what u have in left hand if weap use it if not punch
         if (Input.GetMouseButtonDown(0))
         {
             PerformAttackOrUse();
@@ -23,7 +23,7 @@ public class PlayerLeftClick : MonoBehaviour
         }
         else
         {
-            // Empty-handed attack / punch
+            // if no weapons show this mess (change later)
             Debug.Log("Swung empty hand / Punched!");
         }
     }

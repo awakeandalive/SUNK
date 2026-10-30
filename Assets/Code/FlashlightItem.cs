@@ -9,14 +9,14 @@ public class FlashlightItem : EquippableItem
 
     void Start()
     {
-        // Make sure light starts off if referenced
+        // light must statt off
         if (flashlightSpotLight != null)
         {
             flashlightSpotLight.enabled = isOn;
         }
     }
 
-    // Overrides UseItem so Right-Click toggles the light
+    // Overrides UseItem --> Right-Click toggles light fix later (if i have anotheridea)
     public override void UseItem()
     {
         if (flashlightSpotLight != null)

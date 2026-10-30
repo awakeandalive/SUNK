@@ -12,8 +12,6 @@ public class OceanWaves : MonoBehaviour
     void Start()
     {
         startPosition = transform.position;
-
-        // Grab the material from the plane renderer so we can animate it
         Renderer rend = GetComponent<Renderer>();
         if (rend != null)
         {
@@ -23,11 +21,11 @@ public class OceanWaves : MonoBehaviour
 
     void Update()
     {
-        // 1. Gentle up-and-down floating motion for the whole ocean surface
+        // up down float motion ocean waves
         float newY = startPosition.y + Mathf.Sin(Time.time * waveSpeed) * waveHeight;
         transform.position = new Vector3(startPosition.x, newY, startPosition.z);
 
-        // 2. Scroll the material texture to simulate moving water currents
+        // 2. Scroll the material texture to simulate moving water currents (starter ai change later for hyper realistic ocean waves)
         if (waterMaterial != null)
         {
             float offset = Time.time * textureScrollSpeed;

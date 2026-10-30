@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CloudScroll : MonoBehaviour
 {
-    public float scrollSpeedX = 0.005f; // Slow, eerie drift speed
+    public float scrollSpeedX = 0.005f; // Slow SPEED
     public float scrollSpeedZ = 0.003f;
 
     private Material cloudMaterial;
@@ -20,7 +20,7 @@ public class CloudScroll : MonoBehaviour
     {
         if (cloudMaterial != null)
         {
-            // Slowly shift the cloud texture offset over time
+            // Shift texture clouds 
             float offsetX = Time.time * scrollSpeedX;
             float offsetZ = Time.time * scrollSpeedZ;
             cloudMaterial.mainTextureOffset = new Vector2(offsetX, offsetZ);

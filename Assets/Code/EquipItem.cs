@@ -7,16 +7,15 @@ public class EquippableItem : MonoBehaviour
     public string itemName = "Right Hand Weapon";
 
     [Header("Swing / Attack Settings")]
-    public float punchDistance = 0.3f; // How far forward the hand stabs
-    public float punchSpeed = 15f;      // How fast the punch goes out
-    public float returnSpeed = 10f;     // How fast it returns to rest
+    public float punchDistance = 0.3f;
+    public float punchSpeed = 15f;
+    public float returnSpeed = 10f;
 
     private Vector3 originalPosition;
     private bool isAttacking = false;
 
     void Start()
     {
-        // Store the resting local position of the hand
         originalPosition = transform.localPosition;
     }
 
@@ -32,17 +31,17 @@ public class EquippableItem : MonoBehaviour
     {
         isAttacking = true;
 
-        // Target position (forward along the camera view)
+        // Based on camera punch
         Vector3 targetPosition = originalPosition + new Vector3(0, 0, punchDistance);
 
-        // Punch forward
+        // Punch
         while (Vector3.Distance(transform.localPosition, targetPosition) > 0.01f)
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, Time.deltaTime * punchSpeed);
             yield return null;
         }
 
-        // Return back to resting position
+        // Return back
         while (Vector3.Distance(transform.localPosition, originalPosition) > 0.01f)
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, originalPosition, Time.deltaTime * returnSpeed);

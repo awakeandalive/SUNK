@@ -15,7 +15,7 @@ public class SeaPlantSway : MonoBehaviour
 
     void Update()
     {
-        // Gentle back-and-forth tilt imitating underwater currents
+        // Gentle back-and-forth tilt imitating underwater currents ai prompt))
         float tilt = Mathf.Sin(Time.time * swaySpeed) * swayAngle;
         transform.localRotation = startRotation * Quaternion.Euler(tilt, 0, tilt * 0.5f);
     }

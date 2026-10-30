@@ -11,7 +11,7 @@ public class PlayerHandControls : MonoBehaviour
 
     void Update()
     {
-        // Left-Click (0) -> Melee / Punch with Left Hand
+        // lclick punch left hand 3d
         if (Input.GetMouseButtonDown(0))
         {
             if (leftHandMelee != null)
@@ -20,7 +20,7 @@ public class PlayerHandControls : MonoBehaviour
             }
         }
 
-        // Right-Click (1) -> Use Item / Toggle Light with Right Hand
+        // rclick -> usable item
         if (Input.GetMouseButtonDown(1))
         {
             if (rightHandTool != null)
